@@ -33,30 +33,35 @@ const navItems: NavItem[] = [
   },
   {
     icon: <CalenderIcon />,
-    name: "Calendar",
+    name: "Calendario",
     path: "/calendar",
   },
   {
     icon: <UserCircleIcon />,
-    name: "User Profile",
+    name: "Perfil de Usuario",
     path: "/profile",
   },
   {
-    name: "Forms",
+    icon: <PlugInIcon />,
+    name: "Configuración",
+    path: "/user-settings",
+  },
+  {
+    name: "Formularios",
     icon: <ListIcon />,
-    subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
+    subItems: [{ name: "Elementos de Formulario", path: "/form-elements", pro: false }],
   },
   {
-    name: "Tables",
+    name: "Tablas",
     icon: <TableIcon />,
-    subItems: [{ name: "Basic Tables", path: "/basic-tables", pro: false }],
+    subItems: [{ name: "Tablas Básicas", path: "/basic-tables", pro: false }],
   },
   {
-    name: "Pages",
+    name: "Páginas",
     icon: <PageIcon />,
     subItems: [
-      { name: "Blank Page", path: "/blank", pro: false },
-      { name: "404 Error", path: "/error-404", pro: false },
+      { name: "Página en Blanco", path: "/blank", pro: false },
+      { name: "Error 404", path: "/error-404", pro: false },
     ],
   },
 ];
@@ -64,30 +69,30 @@ const navItems: NavItem[] = [
 const othersItems: NavItem[] = [
   {
     icon: <PieChartIcon />,
-    name: "Charts",
+    name: "Gráficos",
     subItems: [
-      { name: "Line Chart", path: "/line-chart", pro: false },
-      { name: "Bar Chart", path: "/bar-chart", pro: false },
+      { name: "Gráfico de Líneas", path: "/line-chart", pro: false },
+      { name: "Gráfico de Barras", path: "/bar-chart", pro: false },
     ],
   },
   {
     icon: <BoxCubeIcon />,
-    name: "UI Elements",
+    name: "Elementos UI",
     subItems: [
-      { name: "Alerts", path: "/alerts", pro: false },
+      { name: "Alertas", path: "/alerts", pro: false },
       { name: "Avatar", path: "/avatars", pro: false },
-      { name: "Badge", path: "/badge", pro: false },
-      { name: "Buttons", path: "/buttons", pro: false },
-      { name: "Images", path: "/images", pro: false },
+      { name: "Insignias", path: "/badge", pro: false },
+      { name: "Botones", path: "/buttons", pro: false },
+      { name: "Imágenes", path: "/images", pro: false },
       { name: "Videos", path: "/videos", pro: false },
     ],
   },
   {
     icon: <PlugInIcon />,
-    name: "Authentication",
+    name: "Autenticación",
     subItems: [
-      { name: "Sign In", path: "/signin", pro: false },
-      { name: "Sign Up", path: "/signup", pro: false },
+      { name: "Iniciar Sesión", path: "/signin", pro: false },
+      { name: "Registrarse", path: "/signup", pro: false },
     ],
   },
 ];
@@ -278,9 +283,10 @@ const AppSidebar: React.FC = () => {
     <aside
       className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-[#180D5B] dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 
         ${isExpanded || isMobileOpen
+          // estos datos son los que se cambiaron 
           ? "w-[290px]"
           : isHovered
-            ? "w-[290px]"
+            ? "w-[290px]" //esto es el cambio realizado 
             : "w-[90px]"
         }
         ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}
