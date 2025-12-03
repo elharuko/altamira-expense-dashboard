@@ -26,7 +26,7 @@ export default function AuthLayout({
                 />
               </Link>
               <p className="text-center text-gray-400 dark:text-white/60">
-                Free and Open-Source Tailwind CSS Admin Dashboard Template
+                Somos más que tecnología, somos la conexión entre tu visión de futuro y los resultados que quieres lograr.
               </p>
             </div>
           </div>
