@@ -43,6 +43,21 @@ const navItems: NavItem[] = [
   },
   {
     icon: <PlugInIcon />,
+    name: "Recibidos",
+    path: "/recibidos",
+  },
+  {
+    icon: <PlugInIcon />,
+    name: "Informes",
+    path: "/informes",
+  },
+  {
+    icon: <PlugInIcon />,
+    name: "Espacios",
+    path: "/espacios",
+  },
+  {
+    icon: <PlugInIcon />,
     name: "Configuración",
     path: "/user-settings",
   },
@@ -331,7 +346,7 @@ const AppSidebar: React.FC = () => {
           <div className="flex flex-col gap-4">
             <div>
               <h2
-                className={`mb-4 text-xs uppercase flex leading-[20px] text-gray-400 ${!isExpanded && !isHovered
+                className={`mb-4 text-xs uppercase flex leading-[20px] text-white ${!isExpanded && !isHovered
                   ? "lg:justify-center"
                   : "justify-start"
                   }`}
@@ -346,7 +361,7 @@ const AppSidebar: React.FC = () => {
             </div>
             <div className="">
               <h2
-                className={`mb-4 text-xs uppercase flex leading-[20px] text-gray-400 ${!isExpanded && !isHovered
+                className={`mb-4 text-xs uppercase flex leading-[20px] text-white ${!isExpanded && !isHovered
                   ? "lg:justify-center"
                   : "justify-start"
                   }`}
@@ -361,7 +376,6 @@ const AppSidebar: React.FC = () => {
             </div>
           </div>
         </nav>
-        {isExpanded || isHovered || isMobileOpen ? <SidebarWidget /> : null}
       </div>
     </aside>
   );

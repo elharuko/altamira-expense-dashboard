@@ -4,6 +4,10 @@ import SignUp from "./pages/AuthPages/SignUp";
 import NotFound from "./pages/OtherPage/NotFound";
 import UserProfiles from "./pages/UserProfiles";
 import UserSettings from "./pages/UserSetttings";
+import Recibidos from "./pages/Recibidos";
+import Informes from "./pages/Informes";
+import Espacios from "./pages/Espacios";
+import EspacioDetalle from "./pages/EspacioDetalle";
 import Videos from "./pages/UiElements/Videos";
 import Images from "./pages/UiElements/Images";
 import Alerts from "./pages/UiElements/Alerts";
@@ -33,6 +37,10 @@ export default function App() {
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />
             <Route path="/user-settings" element={<UserSettings />} />
+            <Route path="/recibidos" element={<Recibidos />} />
+            <Route path="/informes" element={<Informes />} />
+            <Route path="/espacios" element={<Espacios />} />
+            <Route path="/espacios/:id" element={<EspacioDetalle />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/blank" element={<Blank />} />
 

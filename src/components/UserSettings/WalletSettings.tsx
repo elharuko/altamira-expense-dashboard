@@ -15,7 +15,7 @@ export default function WalletSettings() {
                 <div className="relative">
                     {/* Animación Lottie de billetera */}
                     <div className="text-center">
-                        <div className="mb-4 inline-flex h-64 w-64 items-center justify-center">
+                        <div className="mb-4 inline-flex h-[280px] w-[500px] items-center justify-center">
                             <Lottie
                                 animationData={paymentAnimation}
                                 loop={true}

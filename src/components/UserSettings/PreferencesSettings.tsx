@@ -15,7 +15,7 @@ export default function PreferencesSettings() {
                 <div className="relative">
                     {/* Animación de música */}
                     <div className="text-center">
-                        <div className="mb-4 inline-flex h-48 w-48 items-center justify-center">
+                        <div className="mb-4 inline-flex h-64 w-124 items-center justify-center">
                             <Lottie
                                 animationData={musicAnimation}
                                 loop={true}
