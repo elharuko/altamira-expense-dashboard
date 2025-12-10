@@ -377,7 +377,7 @@
 }
 
 .jvectormap-region.jvectormap-element {
-  @apply !fill-gray-300 hover: !fill-brand-500;
+  @apply !fill-gray-300 hover:!fill-brand-500;
 }
 
 .jvectormap-marker.jvectormap-element {
@@ -555,7 +555,7 @@ span.flatpickr-weekday,
 .flatpickr-day.startRange.nextMonthDay,
 .flatpickr-day.endRange.nextMonthDay {
   background: #465fff;
-  @apply !border-brand-500 !bg-brand-500 hover: !border-brand-500 hover: !bg-brand-500;
+  @apply !border-brand-500 !bg-brand-500 hover:!border-brand-500 hover:!bg-brand-500;
 }
 
 .flatpickr-day.selected.startRange+.endRange:not(:nth-child(7n + 1)),
@@ -568,7 +568,7 @@ span.flatpickr-weekday,
 .flatpickr-months .flatpickr-next-month svg,
 .flatpickr-months .flatpickr-prev-month,
 .flatpickr-months .flatpickr-next-month {
-  @apply hover: !fill-none;
+  @apply hover:!fill-none;
 }
 
 .flatpickr-months .flatpickr-prev-month:hover svg,
@@ -632,7 +632,7 @@ span.flatpickr-weekday,
 }
 
 .fc-addEventButton-button {
-  @apply !rounded-lg !border-0 !bg-brand-500 !px-4 !py-2.5 !text-sm !font-medium hover: !bg-brand-600 focus: !shadow-none;
+  @apply !rounded-lg !border-0 !bg-brand-500 !px-4 !py-2.5 !text-sm !font-medium hover:!bg-brand-600 focus:!shadow-none;
 }
 
 .fc-toolbar-title {
@@ -644,7 +644,7 @@ span.flatpickr-weekday,
 }
 
 .fc-header-toolbar.fc-toolbar .fc-toolbar-chunk:last-child .fc-button {
-  @apply !h-auto !w-auto rounded-md !border-0 bg-transparent !px-5 !py-2 text-sm font-medium text-gray-500 hover:text-gray-700 focus: !shadow-none;
+  @apply !h-auto !w-auto rounded-md !border-0 bg-transparent !px-5 !py-2 text-sm font-medium text-gray-500 hover:text-gray-700 focus:!shadow-none;
 }
 
 .fc-header-toolbar.fc-toolbar .fc-toolbar-chunk:last-child .fc-button.fc-button-active {
@@ -786,17 +786,17 @@ span.flatpickr-weekday,
 
 .carouselTwo .swiper-button-prev,
 .carouselFour .swiper-button-prev {
-  @apply !left-3 sm: !left-4;
+  @apply !left-3 sm:!left-4;
 }
 
 .carouselTwo .swiper-button-next,
 .carouselFour .swiper-button-next {
-  @apply !right-3 sm: !right-4;
+  @apply !right-3 sm:!right-4;
 }
 
 .carouselThree .swiper-pagination,
 .carouselFour .swiper-pagination {
-  @apply !bottom-3 !left-1/2 inline-flex !w-auto -translate-x-1/2 items-center gap-1.5 rounded-[40px] border-[0.5px] border-white/10 bg-white/60 px-2 py-1.5 shadow-slider-navigation backdrop-blur-[10px] sm: !bottom-5;
+  @apply !bottom-3 !left-1/2 inline-flex !w-auto -translate-x-1/2 items-center gap-1.5 rounded-[40px] border-[0.5px] border-white/10 bg-white/60 px-2 py-1.5 shadow-slider-navigation backdrop-blur-[10px] sm:!bottom-5;
 }
 
 .carouselThree .swiper-pagination-bullet,
