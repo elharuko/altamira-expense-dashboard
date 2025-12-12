@@ -21,18 +21,16 @@ export default function AuthLayout({
                 <img
                   width={300}
                   height={62}
-                  src="/images/logo/auth-logo.svg"
+                  src="/images/logo/logo-blanco.png"
                   alt="Logo"
                 />
               </Link>
               <p className="text-lg text-center text-gray-400 dark:text-white/60">
-                Somos más que tecnología, somos la conexión entre tu visión de futuro y los resultados que quieres lograr.
+                Somos más que tecnología, somos la conexión entre tu visión de
+                futuro y los resultados que quieres lograr.
               </p>
             </div>
           </div>
-        </div>
-        <div className="fixed z-50 hidden bottom-6 right-6 sm:block">
-          <ThemeTogglerTwo />
         </div>
       </div>
     </div>
