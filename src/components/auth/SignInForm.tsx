@@ -5,24 +5,35 @@ import Label from "../form/Label";
 import Input from "../form/input/InputField";
 import Checkbox from "../form/input/Checkbox";
 import Button from "../ui/button/Button";
+import { useAuth } from "../../context/AuthContext";
 
 export default function SignInForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { signIn } = useAuth();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/dashboard");
+    setError("");
+    setLoading(true);
+
+    const { error:  signInError } = await signIn(email, password);
+
+    if (signInError) {
+      setError("Credenciales incorrectas. Por favor, verifica tu correo y contraseña.");
+      setLoading(false);
+    } else {
+      navigate("/dashboard");
+    }
   };
+
   return (
     <div className="flex flex-col flex-1">
-      <div className="w-full max-w-md pt-10 mx-auto">
-        <Link
-          to="/dashboard"
-          className="inline-flex items-center text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-        ></Link>
-      </div>
       <div className="flex flex-col justify-center flex-1 w-full max-w-md mx-auto">
         <div>
           <div className="mb-5 sm:mb-8">
@@ -33,6 +44,13 @@ export default function SignInForm() {
               Ingresa tu Correo y Contraseña para iniciar sesión
             </p>
           </div>
+
+          {error && (
+            <div className="mb-4 rounded-lg bg-red-50 p-4 dark:bg-red-900/20">
+              <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+            </div>
+          )}
+
           <div>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
               <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
@@ -94,7 +112,12 @@ export default function SignInForm() {
                   <Label>
                     Correo <span className="text-error-500">*</span>{" "}
                   </Label>
-                  <Input placeholder="prueba@gmail.com" />
+                  <Input
+                    type="email"
+                    placeholder="prueba@gmail.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </div>
                 <div>
                   <Label>
@@ -104,6 +127,8 @@ export default function SignInForm() {
                     <Input
                       type={showPassword ? "text" : "password"}
                       placeholder="Ingresa tu Contraseña"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                     <span
                       onClick={() => setShowPassword(!showPassword)}
@@ -132,8 +157,8 @@ export default function SignInForm() {
                   </Link>
                 </div>
                 <div>
-                  <Button className="w-full" size="sm">
-                    Iniciar Sesión
+                  <Button className="w-full" size="sm" disabled={loading}>
+                    {loading ? "Cargando..." : "Iniciar Sesión"}
                   </Button>
                 </div>
               </div>
