@@ -24,6 +24,7 @@ import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import AuthCallback from "./pages/AuthPages/AuthCallback";
 
 export default function App() {
   return (
@@ -31,17 +32,13 @@ export default function App() {
       <Router>
         <ScrollToTop />
         <Routes>
-          {/* Auth Routes - Public */}
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-
-          {/* Protected Routes */}
+          <Route path="/auth/callback" element={<AuthCallback />} />
+          {/* Rutas protegidas */}
           <Route element={<ProtectedRoute />}>
             <Route element={<AppLayout />}>
-              <Route path="/" element={<Navigate to="/signin" replace />} />
+              <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Home />} />
-              
-              {/* Others Page */}
+
               <Route path="/profile" element={<UserProfiles />} />
               <Route path="/user-settings" element={<UserSettings />} />
               <Route path="/recibidos" element={<Recibidos />} />
@@ -51,13 +48,9 @@ export default function App() {
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/blank" element={<Blank />} />
 
-              {/* Forms */}
               <Route path="/form-elements" element={<FormElements />} />
-
-              {/* Tables */}
               <Route path="/basic-tables" element={<BasicTables />} />
 
-              {/* Ui Elements */}
               <Route path="/alerts" element={<Alerts />} />
               <Route path="/avatars" element={<Avatars />} />
               <Route path="/badge" element={<Badges />} />
@@ -65,13 +58,15 @@ export default function App() {
               <Route path="/images" element={<Images />} />
               <Route path="/videos" element={<Videos />} />
 
-              {/* Charts */}
               <Route path="/line-chart" element={<LineChart />} />
               <Route path="/bar-chart" element={<BarChart />} />
             </Route>
           </Route>
 
-          {/* Fallback Route */}
+          {/* Rutas públicas */}
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
