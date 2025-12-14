@@ -1,25 +1,42 @@
 import { useEffect } from "react";
-import { useNavigate, useSearchParams } from "react-router";
-
+import { useNavigate, useSearchParams } from "react-router";  
+import { supabase } from "../../lib/supabase";
+  
 export default function AuthCallback() {
   const navigate = useNavigate();
   const [params] = useSearchParams();
 
   useEffect(() => {
-    const error = params.get("error");
-    const description = params.get("error_description");
+    const handleCallback = async () => {
+      const error = params.get("error");
 
-    if (error) {
-      navigate("/signin", {
-        replace: true,
-        state: {
-          oauthError: "ACCOUNT_NOT_ALLOWED",
-        },
-      });
-      return;
-    }
+      // 1. Si hay error → volver a login con mensaje
+      if (error) {
+        navigate("/signin", {
+          replace: true,
+          state: {
+            oauthError: "ACCOUNT_NOT_ALLOWED",
+          },
+        });
+        return;
+      }
 
-    navigate("/dashboard", { replace: true });
+      // 2. Esperar sesión real de Supabase
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session) {
+        // fallback de seguridad
+        navigate("/signin", { replace: true });
+        return;
+      }
+
+      // 3. Sesión OK → dashboard
+      navigate("/dashboard", { replace: true });
+    };
+
+    handleCallback();
   }, []);
 
   return null;
