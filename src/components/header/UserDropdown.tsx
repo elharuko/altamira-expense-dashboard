@@ -6,20 +6,17 @@ import { useAuth } from "../../context/AuthContext";
 export default function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const { user, signOut } = useAuth();
+  const provider = user.app_metadata?.provider;
 
   if (!user) return null;
 
   const name =
-    user.user_metadata?.full_name ||
-    user.user_metadata?.name ||
-    user.email;
+    user.user_metadata?.full_name || user.user_metadata?.name || user.email;
 
   const email = user.email;
 
   const avatar =
-    user.user_metadata?.avatar_url ||
-    user.user_metadata?.picture ||
-    null;
+    user.user_metadata?.avatar_url || user.user_metadata?.picture || null;
 
   function toggleDropdown() {
     setIsOpen(!isOpen);
@@ -34,25 +31,29 @@ export default function UserDropdown() {
     closeDropdown();
   }
 
+  const isEmailProvider = provider === "email";
+
   return (
     <div className="relative">
       <button
         onClick={toggleDropdown}
         className="flex items-center text-gray-700 dropdown-toggle dark:text-gray-400"
       >
-        <span className="mr-3 overflow-hidden rounded-full h-11 w-11">
-          {avatar ? (
-            <img src={avatar} alt="User" />
+        <span className="mr-3 overflow-hidden rounded-full h-11 w-11 flex items-center justify-center">
+          {avatar && !isEmailProvider ? (
+            <img
+              src={avatar}
+              alt="User"
+              className="h-full w-full object-cover"
+            />
           ) : (
-            <div className="flex h-full w-full items-center justify-center bg-gray-300 text-sm font-medium">
+            <div className="flex h-full w-full items-center justify-center rounded-full bg-gradient-to-br from-[#049c8d] to-[#27255f] text-white text-sm font-semibold">
               {name.charAt(0).toUpperCase()}
             </div>
           )}
         </span>
 
-        <span className="block mr-1 font-medium text-theme-sm">
-          {name}
-        </span>
+        <span className="block mr-1 font-medium text-theme-sm">{name}</span>
 
         <svg
           className={`stroke-gray-500 transition-transform duration-200 ${
@@ -82,9 +83,7 @@ export default function UserDropdown() {
           <span className="block font-medium text-gray-700 text-theme-sm">
             {name}
           </span>
-          <span className="block text-theme-xs text-gray-500">
-            {email}
-          </span>
+          <span className="block text-theme-xs text-gray-500">{email}</span>
         </div>
 
         <ul className="flex flex-col gap-1 pt-3 pb-3 border-b">
