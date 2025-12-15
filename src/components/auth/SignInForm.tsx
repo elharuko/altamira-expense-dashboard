@@ -53,7 +53,6 @@ export default function SignInForm() {
         setOauthError("No se pudo iniciar sesión con el proveedor.");
       }
 
-      // limpiar state
       window.history.replaceState({}, document.title, window.location.pathname);
     }
   }, [location.state]);
