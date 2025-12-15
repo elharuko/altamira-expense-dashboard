@@ -26,16 +26,16 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  {
-    icon: <GridIcon />,
-    name: "Dashboard",
-    subItems: [{ name: "Ecommerce", path: "/", pro: false }],
-  },
-  {
-    icon: <CalenderIcon />,
-    name: "Calendario",
-    path: "/calendar",
-  },
+  // {
+  //   icon: <GridIcon />,
+  //   name: "Dashboard",
+  //   subItems: [{ name: "Ecommerce", path: "/", pro: false }],
+  // },
+  //{
+  //  icon: <CalenderIcon />,
+  //  name: "Calendario",
+  //  path: "/calendar",
+  //},
   {
     icon: <UserCircleIcon />,
     name: "Perfil de Usuario",
@@ -61,47 +61,47 @@ const navItems: NavItem[] = [
     name: "Configuración",
     path: "/user-settings",
   },
-  {
-    name: "Formularios",
-    icon: <ListIcon />,
-    subItems: [{ name: "Elementos de Formulario", path: "/form-elements", pro: false }],
-  },
-  {
-    name: "Tablas",
-    icon: <TableIcon />,
-    subItems: [{ name: "Tablas Básicas", path: "/basic-tables", pro: false }],
-  },
-  {
-    name: "Páginas",
-    icon: <PageIcon />,
-    subItems: [
-      { name: "Página en Blanco", path: "/blank", pro: false },
-      { name: "Error 404", path: "/error-404", pro: false },
-    ],
-  },
+  //{
+  //  name: "Formularios",
+  //  icon: <ListIcon />,
+  //  subItems: [{ name: "Elementos de Formulario", path: "/form-elements", pro: false }],
+  //},
+  //{
+  //  name: "Tablas",
+  //  icon: <TableIcon />,
+  //  subItems: [{ name: "Tablas Básicas", path: "/basic-tables", pro: false }],
+  //},
+  //{
+  //  name: "Páginas",
+  //  icon: <PageIcon />,
+  //  subItems: [
+  //   { name: "Página en Blanco", path: "/blank", pro: false },
+  //    { name: "Error 404", path: "/error-404", pro: false },
+  // ],
+  //},
 ];
 
 const othersItems: NavItem[] = [
-  {
-    icon: <PieChartIcon />,
-    name: "Gráficos",
-    subItems: [
-      { name: "Gráfico de Líneas", path: "/line-chart", pro: false },
-      { name: "Gráfico de Barras", path: "/bar-chart", pro: false },
-    ],
-  },
-  {
-    icon: <BoxCubeIcon />,
-    name: "Elementos UI",
-    subItems: [
-      { name: "Alertas", path: "/alerts", pro: false },
-      { name: "Avatar", path: "/avatars", pro: false },
-      { name: "Insignias", path: "/badge", pro: false },
-      { name: "Botones", path: "/buttons", pro: false },
-      { name: "Imágenes", path: "/images", pro: false },
-      { name: "Videos", path: "/videos", pro: false },
-    ],
-  },
+  //{
+  //  icon: <PieChartIcon />,
+  //  name: "Gráficos",
+  //  subItems: [
+  //    { name: "Gráfico de Líneas", path: "/line-chart", pro: false },
+  //    { name: "Gráfico de Barras", path: "/bar-chart", pro: false },
+  //  ],
+  //},
+  //{
+  //  icon: <BoxCubeIcon />,
+  //  name: "Elementos UI",
+  //  subItems: [
+  //    { name: "Alertas", path: "/alerts", pro: false },
+  //    { name: "Avatar", path: "/avatars", pro: false },
+  //    { name: "Insignias", path: "/badge", pro: false },
+  //    { name: "Botones", path: "/buttons", pro: false },
+  //    { name: "Imágenes", path: "/images", pro: false },
+  //    { name: "Videos", path: "/videos", pro: false },
+  //  ],
+  //},
   {
     icon: <PlugInIcon />,
     name: "Autenticación",

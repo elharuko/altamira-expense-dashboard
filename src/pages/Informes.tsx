@@ -63,13 +63,33 @@ export default function Informes() {
                                 </button>
                                 <button
                                     onClick={() => setActiveView("chats")}
-                                    className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors ${activeView === "chats"
+                                    className={`mb-1 flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors ${activeView === "chats"
                                         ? "bg-teal-600 text-white"
                                         : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50"
                                         }`}
                                 >
                                     <span>💬</span>
                                     Chats
+                                </button>
+                                <button
+                                    onClick={() => setActiveView("factura")}
+                                    className={`mb-1 flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors ${activeView === "factura"
+                                        ? "bg-teal-600 text-white"
+                                        : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50"
+                                        }`}
+                                >
+                                    <span>🧾</span>
+                                    Factura
+                                </button>
+                                <button
+                                    onClick={() => setActiveView("boleta")}
+                                    className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm font-medium transition-colors ${activeView === "boleta"
+                                        ? "bg-teal-600 text-white"
+                                        : "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50"
+                                        }`}
+                                >
+                                    <span>🎫</span>
+                                    Boleta
                                 </button>
                             </div>
                         </div>
@@ -122,6 +142,26 @@ export default function Informes() {
                                 typeFilterLabel="Tipo: Chats"
                                 emptyMessage="No se encontraron chats"
                                 emptyIcon="💬"
+                            />
+                        )}
+
+                        {activeView === "factura" && (
+                            <SearchFilterLayout
+                                searchPlaceholder="Busca algo"
+                                typeFilterLabel="Tipo: Facturas"
+                                emptyMessage="No se encontraron facturas"
+                                emptySubtitle="Aún no tienes facturas registradas."
+                                emptyIcon="🧾"
+                            />
+                        )}
+
+                        {activeView === "boleta" && (
+                            <SearchFilterLayout
+                                searchPlaceholder="Busca algo"
+                                typeFilterLabel="Tipo: Boletas"
+                                emptyMessage="No se encontraron boletas"
+                                emptySubtitle="Aún no tienes boletas registradas."
+                                emptyIcon="🎫"
                             />
                         )}
                     </div>
