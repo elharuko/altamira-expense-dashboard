@@ -326,10 +326,11 @@ const AppSidebar: React.FC = () => {
               />
               <img
                 className="hidden dark:block"
-                src="/images/logo/logo-dark.svg"
+                src="/images/logo/logo-blanco.png"
                 alt="Logo"
-                width={150}
+                width={200}
                 height={40}
+                style={{ margin: 11 }}
               />
             </>
           ) : (
