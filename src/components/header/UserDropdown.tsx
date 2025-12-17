@@ -77,7 +77,7 @@ export default function UserDropdown() {
       <Dropdown
         isOpen={isOpen}
         onClose={closeDropdown}
-        className="absolute right-0 mt-[17px] w-[260px] rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg dark:border-gray-800 dark:bg-gray-dark"
+        className="absolute right-0 mt-[22px] w-[260px] rounded-2xl border border-gray-200 bg-white p-3 shadow-theme-lg dark:border-gray-800 dark:bg-gray-dark"
       >
         <div className="mb-3">
           <span className="block font-medium text-gray-700 text-theme-sm">
@@ -89,12 +89,12 @@ export default function UserDropdown() {
         <ul className="flex flex-col gap-1 pt-3 pb-3 border-b">
           <li>
             <DropdownItem onItemClick={closeDropdown} tag="a" to="/profile">
-              Edit profile
+              Editar Perfil
             </DropdownItem>
           </li>
           <li>
             <DropdownItem onItemClick={closeDropdown} tag="a" to="/profile">
-              Account settings
+              Configuracion
             </DropdownItem>
           </li>
         </ul>
@@ -103,7 +103,7 @@ export default function UserDropdown() {
           onClick={handleSignOut}
           className="flex w-full items-center gap-3 px-3 py-2 mt-3 font-medium text-red-600 rounded-lg hover:bg-red-50"
         >
-          Sign out
+          Cerrar Sesion
         </button>
       </Dropdown>
     </div>

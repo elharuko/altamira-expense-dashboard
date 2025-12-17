@@ -3,22 +3,17 @@ import { Link, useLocation, useNavigate } from "react-router";
 
 // Assume these icons are imported from an icon library
 import {
-  BoxCubeIcon,
-  CalenderIcon,
   ChevronDownIcon,
-  GridIcon,
   HorizontaLDots,
-  ListIcon,
   PageIcon,
-  PieChartIcon,
   PlugInIcon,
-  TableIcon,
-  UserCircleIcon,
   powerIcon as PowerIcon,
+  WorkspaceIcon,
+  MessageIcon,
+  ReportIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
 import { useAuth } from "../context/AuthContext";
-import SidebarWidget from "./SidebarWidget";
 
 type NavItem = {
   name: string;
@@ -39,29 +34,19 @@ const navItems: NavItem[] = [
   //  path: "/calendar",
   //},
   {
-    icon: <UserCircleIcon />,
-    name: "Perfil de Usuario",
-    path: "/profile",
-  },
-  {
-    icon: <PlugInIcon />,
-    name: "Recibidos",
+    icon: <MessageIcon />,
+    name: "Inbox",
     path: "/recibidos",
   },
   {
-    icon: <PlugInIcon />,
-    name: "Informes",
+    icon: <ReportIcon />,
+    name: "Reportes",
     path: "/informes",
   },
   {
-    icon: <PlugInIcon />,
+    icon: <WorkspaceIcon />,
     name: "Espacios",
     path: "/espacios",
-  },
-  {
-    icon: <PlugInIcon />,
-    name: "Configuración",
-    path: "/user-settings",
   },
   //{
   //  name: "Formularios",
@@ -115,7 +100,7 @@ const othersItems: NavItem[] = [
 ];
 
 const AppSidebar: React.FC = () => {
-  const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
+  const { isExpanded, isMobileOpen } = useSidebar();
   const location = useLocation();
   const navigate = useNavigate();
   const { signOut } = useAuth();
@@ -196,13 +181,10 @@ const AppSidebar: React.FC = () => {
           {nav.subItems ? (
             <button
               onClick={() => handleSubmenuToggle(index, menuType)}
-              className={`menu-item group ${openSubmenu?.type === menuType && openSubmenu?.index === index
+              className={`menu-item group flex flex-col items-center gap-2 ${openSubmenu?.type === menuType && openSubmenu?.index === index
                 ? "menu-item-active"
                 : "menu-item-inactive"
-                } cursor-pointer ${!isExpanded && !isHovered
-                  ? "lg:justify-center"
-                  : "lg:justify-start"
-                }`}
+                } cursor-pointer`}
             >
               <span
                 className={`menu-item-icon-size  ${openSubmenu?.type === menuType && openSubmenu?.index === index
@@ -212,12 +194,10 @@ const AppSidebar: React.FC = () => {
               >
                 {nav.icon}
               </span>
-              {(isExpanded || isHovered || isMobileOpen) && (
-                <span className="menu-item-text">{nav.name}</span>
-              )}
-              {(isExpanded || isHovered || isMobileOpen) && (
+              <span className="menu-item-text text-center text-xs">{nav.name}</span>
+              {(isExpanded || isMobileOpen) && (
                 <ChevronDownIcon
-                  className={`ml-auto w-5 h-5 transition-transform duration-200 ${openSubmenu?.type === menuType &&
+                  className={`w-5 h-5 transition-transform duration-200 ${openSubmenu?.type === menuType &&
                     openSubmenu?.index === index
                     ? "rotate-180 text-brand-500"
                     : ""
@@ -229,7 +209,7 @@ const AppSidebar: React.FC = () => {
             nav.path && (
               <Link
                 to={nav.path}
-                className={`menu-item group ${isActive(nav.path) ? "menu-item-active" : "menu-item-inactive"
+                className={`menu-item group flex flex-col items-center gap-2 ${isActive(nav.path) ? "menu-item-active" : "menu-item-inactive"
                   }`}
               >
                 <span
@@ -240,13 +220,11 @@ const AppSidebar: React.FC = () => {
                 >
                   {nav.icon}
                 </span>
-                {(isExpanded || isHovered || isMobileOpen) && (
-                  <span className="menu-item-text">{nav.name}</span>
-                )}
+                <span className="menu-item-text text-center text-xs">{nav.name}</span>
               </Link>
             )
           )}
-          {nav.subItems && (isExpanded || isHovered || isMobileOpen) && (
+          {nav.subItems && (isExpanded || isMobileOpen) && (
             <div
               ref={(el) => {
                 subMenuRefs.current[`${menuType}-${index}`] = el;
@@ -307,47 +285,42 @@ const AppSidebar: React.FC = () => {
     <aside
       className={`fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-[#180D5B] dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-50 border-r border-gray-200 
         ${isExpanded || isMobileOpen
-          // estos datos son los que se cambiaron 
-          ? "w-[290px]"
-          : isHovered
-            ? "w-[290px]" //esto es el cambio realizado 
-            : "w-[90px]"
+          ? "w-[340px]"
+          : "w-[120px]"
         }
         ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}
         lg:translate-x-0`}
-      onMouseEnter={() => !isExpanded && setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className={`py-8 flex ${!isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
+        className={`py-8 flex ${!isExpanded ? "lg:justify-center" : "justify-start"
           }`}
       >
         <Link to="/">
-          {isExpanded || isHovered || isMobileOpen ? (
+          {isExpanded || isMobileOpen ? (
             <>
               <img
                 className="dark:hidden"
                 src="/images/logo/logo-blanco.png"
                 alt="Logo"
-                width={200}
+                width={220}
                 height={40}
-                style={{ margin: 11 }}
+                style={{ margin: 0 }}
               />
               <img
                 className="hidden dark:block"
                 src="/images/logo/logo-blanco.png"
                 alt="Logo"
-                width={200}
+                width={220}
                 height={40}
-                style={{ margin: 11 }}
+                style={{ margin: 0 }}
               />
             </>
           ) : (
             <img
-              src="/images/logo/logo-icon.svg"
+              src="/images/logo/logo-mobil.png"
               alt="Logo"
-              width={32}
-              height={32}
+              width={48}
+              height={48}
             />
           )}
         </Link>
@@ -357,12 +330,12 @@ const AppSidebar: React.FC = () => {
           <div className="flex flex-col gap-4">
             <div>
               <h2
-                className={`mb-4 text-xs uppercase flex leading-[20px] text-white ${!isExpanded && !isHovered
+                className={`mb-4 text-xs uppercase flex leading-[20px] text-white ${!isExpanded
                   ? "lg:justify-center"
                   : "justify-start"
                   }`}
               >
-                {isExpanded || isHovered || isMobileOpen ? (
+                {isExpanded || isMobileOpen ? (
                   "Menu"
                 ) : (
                   <HorizontaLDots className="size-6" />
@@ -370,38 +343,21 @@ const AppSidebar: React.FC = () => {
               </h2>
               {renderMenuItems(navItems, "main")}
             </div>
-            <div className="">
-              <h2
-                className={`mb-4 text-xs uppercase flex leading-[20px] text-white ${!isExpanded && !isHovered
-                  ? "lg:justify-center"
-                  : "justify-start"
-                  }`}
-              >
-                {isExpanded || isHovered || isMobileOpen ? (
-                  "Others"
-                ) : (
-                  <HorizontaLDots />
-                )}
-              </h2>
-              {renderMenuItems(othersItems, "others")}
-            </div>
           </div>
         </nav>
       </div>
       <div className="mt-auto border-t border-gray-700 pt-4 pb-4">
         <button
           onClick={handleLogout}
-          className={`w-full menu-item group menu-item-inactive cursor-pointer flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 hover:bg-brand-500/10 ${!isExpanded && !isHovered
+          className={`w-full menu-item group menu-item-inactive cursor-pointer flex flex-col items-center gap-2 px-4 py-3 rounded-lg transition-colors duration-200 ${!isExpanded
             ? "lg:justify-center"
             : "lg:justify-start"
             }`}
         >
           <PowerIcon className="w-6 h-6" />
-          {(isExpanded || isHovered || isMobileOpen) && (
-            <span className="text-sm font-medium text-gray-300 group-hover:text-brand-500">
-              Cerrar Sesión
-            </span>
-          )}
+          <span className="text-xs font-medium text-gray-300 text-center">
+            Cerrar Sesión
+          </span>
         </button>
       </div>
     </aside>
