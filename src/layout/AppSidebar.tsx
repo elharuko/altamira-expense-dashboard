@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 // Assume these icons are imported from an icon library
 import {
@@ -14,8 +14,10 @@ import {
   PlugInIcon,
   TableIcon,
   UserCircleIcon,
+  powerIcon as PowerIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
+import { useAuth } from "../context/AuthContext";
 import SidebarWidget from "./SidebarWidget";
 
 type NavItem = {
@@ -115,6 +117,8 @@ const othersItems: NavItem[] = [
 const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
   const location = useLocation();
+  const navigate = useNavigate();
+  const { signOut } = useAuth();
 
   const [openSubmenu, setOpenSubmenu] = useState<{
     type: "main" | "others";
@@ -178,6 +182,11 @@ const AppSidebar: React.FC = () => {
       }
       return { type: menuType, index };
     });
+  };
+
+  const handleLogout = async () => {
+    await signOut();
+    navigate("/signin");
   };
 
   const renderMenuItems = (items: NavItem[], menuType: "main" | "others") => (
@@ -378,6 +387,22 @@ const AppSidebar: React.FC = () => {
             </div>
           </div>
         </nav>
+      </div>
+      <div className="mt-auto border-t border-gray-700 pt-4 pb-4">
+        <button
+          onClick={handleLogout}
+          className={`w-full menu-item group menu-item-inactive cursor-pointer flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 hover:bg-brand-500/10 ${!isExpanded && !isHovered
+            ? "lg:justify-center"
+            : "lg:justify-start"
+            }`}
+        >
+          <PowerIcon className="w-6 h-6" />
+          {(isExpanded || isHovered || isMobileOpen) && (
+            <span className="text-sm font-medium text-gray-300 group-hover:text-brand-500">
+              Cerrar Sesión
+            </span>
+          )}
+        </button>
       </div>
     </aside>
   );
