@@ -11,6 +11,7 @@ import {
   WorkspaceIcon,
   MessageIcon,
   ReportIcon,
+  GridIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
 import { useAuth } from "../context/AuthContext";
@@ -23,11 +24,11 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  // {
-  //   icon: <GridIcon />,
-  //   name: "Dashboard",
-  //   subItems: [{ name: "Ecommerce", path: "/", pro: false }],
-  // },
+   {
+     icon: <GridIcon />,
+     name: "Inicio",
+     subItems: [{ name: "Ecommerce", path: "/", pro: false }],
+   },
   //{
   //  icon: <CalenderIcon />,
   //  name: "Calendario",
