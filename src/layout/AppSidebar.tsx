@@ -5,8 +5,6 @@ import { Link, useLocation, useNavigate } from "react-router";
 import {
   ChevronDownIcon,
   HorizontaLDots,
-  PageIcon,
-  PlugInIcon,
   powerIcon as PowerIcon,
   WorkspaceIcon,
   MessageIcon,
@@ -21,6 +19,7 @@ type NavItem = {
   icon: React.ReactNode;
   path?: string;
   subItems?: { name: string; path: string; pro?: boolean; new?: boolean }[];
+  action?: () => void;
 };
 
 const navItems: NavItem[] = [
@@ -69,7 +68,7 @@ const navItems: NavItem[] = [
   //},
 ];
 
-const othersItems: NavItem[] = [
+const othersItemsStatic: NavItem[] = [
   //{
   //  icon: <PieChartIcon />,
   //  name: "Gráficos",
@@ -90,14 +89,6 @@ const othersItems: NavItem[] = [
   //    { name: "Videos", path: "/videos", pro: false },
   //  ],
   //},
-  {
-    icon: <PlugInIcon />,
-    name: "Autenticación",
-    subItems: [
-      { name: "Iniciar Sesión", path: "/signin", pro: false },
-      { name: "Registrarse", path: "/signup", pro: false },
-    ],
-  },
 ];
 
 const AppSidebar: React.FC = () => {
@@ -105,6 +96,15 @@ const AppSidebar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { signOut } = useAuth();
+
+  const handleLogout = async () => {
+    await signOut();
+    navigate("/signin");
+  };
+
+  const othersItems: NavItem[] = [
+    ...othersItemsStatic,
+  ];
 
   const [openSubmenu, setOpenSubmenu] = useState<{
     type: "main" | "others";
@@ -170,11 +170,6 @@ const AppSidebar: React.FC = () => {
     });
   };
 
-  const handleLogout = async () => {
-    await signOut();
-    navigate("/signin");
-  };
-
   const renderMenuItems = (items: NavItem[], menuType: "main" | "others") => (
     <ul className="flex flex-col gap-4">
       {items.map((nav, index) => (
@@ -205,6 +200,16 @@ const AppSidebar: React.FC = () => {
                     }`}
                 />
               )}
+            </button>
+          ) : nav.action ? (
+            <button
+              onClick={nav.action}
+              className={`menu-item group flex flex-col items-center gap-2 menu-item-inactive cursor-pointer hover:text-brand-500 transition-colors`}
+            >
+              <span className={`menu-item-icon-size menu-item-icon-inactive`}>
+                {nav.icon}
+              </span>
+              <span className="menu-item-text text-center text-xs">{nav.name}</span>
             </button>
           ) : (
             nav.path && (
@@ -344,21 +349,37 @@ const AppSidebar: React.FC = () => {
               </h2>
               {renderMenuItems(navItems, "main")}
             </div>
+            <div className="">
+              <h2
+                className={`mb-4 text-xs uppercase flex leading-[20px] text-white ${!isExpanded
+                  ? "lg:justify-center"
+                  : "justify-start"
+                  }`}
+              >
+                {isExpanded || isMobileOpen ? (
+                  "Others"
+                ) : (
+                  <HorizontaLDots />
+                )}
+              </h2>
+              {renderMenuItems(othersItems, "others")}
+            </div>
           </div>
         </nav>
       </div>
       <div className="mt-auto border-t border-gray-700 pt-4 pb-4">
         <button
           onClick={handleLogout}
-          className={`w-full menu-item group menu-item-inactive cursor-pointer flex flex-col items-center gap-2 px-4 py-3 rounded-lg transition-colors duration-200 ${!isExpanded
-            ? "lg:justify-center"
-            : "lg:justify-start"
-            }`}
+          className={`w-full menu-item group menu-item-inactive cursor-pointer flex flex-col items-center gap-2 px-4 py-3 rounded-lg transition-colors duration-200 hover:text-brand-500 ${
+            !isExpanded ? "lg:justify-center" : "lg:justify-start"
+          }`}
         >
           <PowerIcon className="w-6 h-6" />
-          <span className="text-xs font-medium text-gray-300 text-center">
-            Cerrar Sesión
-          </span>
+          {(isExpanded || isMobileOpen) && (
+            <span className="text-xs font-medium text-gray-300 text-center">
+              Cerrar Sesión
+            </span>
+          )}
         </button>
       </div>
     </aside>
