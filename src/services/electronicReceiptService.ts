@@ -26,6 +26,7 @@ export async function getElectronicReceipts(): Promise<ElectronicReceipt[] | nul
         const { data, error } = await supabase
             .from('electronic_invoices')
             .select('id, business_name, issuer_ruc, items, subtotal_amount, total_amount, issue_date, created_at')
+            .eq('voucher_type', 2)
             .order('created_at', { ascending: false })
 
         if (error) {
@@ -71,6 +72,7 @@ export async function getReceiptsByRuc(ruc: string): Promise<ElectronicReceipt[]
         const { data, error } = await supabase
             .from('electronic_invoices')
             .select('id, business_name, issuer_ruc, items, subtotal_amount, total_amount, issue_date, created_at')
+            .eq('voucher_type', 2)
             .eq('issuer_ruc', ruc)
             .order('created_at', { ascending: false })
 
@@ -94,6 +96,7 @@ export async function searchReceiptsByBusinessName(businessName: string): Promis
         const { data, error } = await supabase
             .from('electronic_invoices')
             .select('id, business_name, issuer_ruc, items, subtotal_amount, total_amount, issue_date, created_at')
+            .eq('voucher_type', 2)
             .ilike('business_name', `%${businessName}%`)
             .order('created_at', { ascending: false })
 
