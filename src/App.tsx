@@ -25,6 +25,7 @@ import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AuthCallback from "./pages/AuthPages/AuthCallback";
+import Chats from "./pages/Chats"; 
 
 export default function App() {
   return (
@@ -60,6 +61,8 @@ export default function App() {
 
               <Route path="/line-chart" element={<LineChart />} />
               <Route path="/bar-chart" element={<BarChart />} />
+              <Route path="/chats" element={<Chats />} />
+
             </Route>
           </Route>
 
