@@ -10,6 +10,7 @@ import {
   MessageIcon,
   ReportIcon,
   GridIcon,
+  PeopleIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
 import { useAuth } from "../context/AuthContext";
@@ -47,6 +48,11 @@ const navItems: NavItem[] = [
     icon: <WorkspaceIcon />,
     name: "Espacios",
     path: "/espacios",
+  },
+    {
+    icon: <PeopleIcon />,
+    name: "Empleados",
+    path: "/empleados",
   },
   //{
   //  name: "Formularios",

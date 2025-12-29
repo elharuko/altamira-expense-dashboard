@@ -26,6 +26,7 @@ import Home from "./pages/Dashboard/Home";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AuthCallback from "./pages/AuthPages/AuthCallback";
 import Chats from "./pages/Chats"; 
+import Empleados from "./pages/empleados";
 
 export default function App() {
   return (
@@ -48,6 +49,7 @@ export default function App() {
               <Route path="/espacios/:id" element={<EspacioDetalle />} />
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/blank" element={<Blank />} />
+              <Route path="/empleados" element={<Empleados />} />
 
               <Route path="/form-elements" element={<FormElements />} />
               <Route path="/basic-tables" element={<BasicTables />} />

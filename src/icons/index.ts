@@ -58,6 +58,7 @@ import { ReactComponent as powerIcon } from "./power.svg?react";
 import { ReactComponent as WorkspaceIcon } from "./workspace.svg?react";
 import { ReactComponent as MessageIcon } from "./message.svg?react";
 import { ReactComponent as ReportIcon } from "./report.svg?react";
+import { ReactComponent as PeopleIcon } from "./people-icon.svg?react";
 
 export {
   ErrorHexaIcon,
@@ -120,4 +121,5 @@ export {
   WorkspaceIcon,
   MessageIcon,
   ReportIcon,
+  PeopleIcon,
 };
