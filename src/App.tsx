@@ -27,6 +27,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AuthCallback from "./pages/AuthPages/AuthCallback";
 import Chats from "./pages/Chats"; 
 import Empleados from "./pages/empleados";
+import EmpleadoDetalle from "./pages/EmpleadoDetalle";
 
 export default function App() {
   return (
@@ -43,6 +44,7 @@ export default function App() {
 
               <Route path="/profile" element={<UserProfiles />} />
               <Route path="/user-settings" element={<UserSettings />} />
+              <Route path="/configuracion" element={<UserSettings />} />
               <Route path="/recibidos" element={<Recibidos />} />
               <Route path="/informes" element={<Informes />} />
               <Route path="/espacios" element={<Espacios />} />
@@ -50,6 +52,7 @@ export default function App() {
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/blank" element={<Blank />} />
               <Route path="/empleados" element={<Empleados />} />
+              <Route path="/empleados/:id" element={<EmpleadoDetalle />} />
 
               <Route path="/form-elements" element={<FormElements />} />
               <Route path="/basic-tables" element={<BasicTables />} />
